@@ -20,3 +20,6 @@ const productos = [
     { nombre: "Copa menstrual", categoria: "Cuidado personal", precio: 14.00, descripcion: "Silicona médica, reutilizable por años.", imagen: "https://sp-ao.shortpixel..." },
     { nombre: "Hilo dental biodegradable", categoria: "Cuidado personal", precio: 3.75, descripcion: "De seda natural, en frasco de vidrio.", imagen: "https://encrypted-tbn0.gst..." }
 ];
+// 2. Referencias a los elementos del DOM
+const inputBuscador = document.getElementById('buscador');
+const contenedorCatalogo = document.getElementById('catalogo-productos');
