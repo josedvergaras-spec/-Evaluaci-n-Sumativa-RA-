@@ -49,3 +49,20 @@ function renderizarProductos(listaProductos) {
         contenedorCatalogo.appendChild(tarjeta);
     });
 }
+// 4. Evento del DOM para la búsqueda y filtrado en tiempo real
+inputBuscador.addEventListener('input', (evento) => {
+    const textoBusqueda = evento.target.value.toLowerCase().trim();
+    
+    const productosFiltrados = productos.filter(producto => 
+        producto.nombre.toLowerCase().includes(textoBusqueda) || 
+        producto.descripcion.toLowerCase().includes(textoBusqueda) ||
+        producto.categoria.toLowerCase().includes(textoBusqueda)
+    );
+    
+    renderizarProductos(productosFiltrados);
+});
+
+// Renderizar todos los productos al iniciar la página
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarProductos(productos);
+});
