@@ -23,3 +23,29 @@ const productos = [
 // 2. Referencias a los elementos del DOM
 const inputBuscador = document.getElementById('buscador');
 const contenedorCatalogo = document.getElementById('catalogo-productos');
+// 3. Función para mostrar los productos dinámicamente
+function renderizarProductos(listaProductos) {
+    contenedorCatalogo.innerHTML = ""; 
+    
+    if (listaProductos.length === 0) {
+        contenedorCatalogo.innerHTML = `<p class="text-center text-muted col-12">No se encontraron productos.</p>`;
+        return;
+    }
+
+    listaProductos.forEach(producto => {
+        const tarjeta = document.createElement('div');
+        tarjeta.className = "col-12 col-md-6 col-lg-4 mb-4";
+        tarjeta.innerHTML = `
+            <div class="card h-100 shadow-sm">
+                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <div class="card-body">
+                    <span class="badge bg-success mb-2">${producto.categoria}</span>
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">${producto.descripcion}</p>
+                    <p class="card-text fw-bold text-success">$${producto.precio.toFixed(2)}</p>
+                </div>
+            </div>
+        `;
+        contenedorCatalogo.appendChild(tarjeta);
+    });
+}
