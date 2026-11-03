@@ -62,3 +62,24 @@ window.cambiarCantidad = function(index, cambio) {
     }
     actualizarCarrito();
 };
+// 4. Simulación de finalización de compra
+document.getElementById('btn-finalizar-compra').addEventListener('click', () => {
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío. Explora el catálogo para agregar productos ecológicos.");
+        return;
+    }
+    
+    alert(`¡Transacción exitosa! Has pagado un total de ${totalCarrito.textContent}. Gracias por comprar en EcoMarket.`);
+    
+    // Vaciar el carrito tras la compra y actualizar la vista
+    carrito = [];
+    actualizarCarrito();
+    
+    // Cerrar el modal automáticamente (requiere Bootstrap JS)
+    const modalElement = document.getElementById('carritoModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+    if(modalInstance) modalInstance.hide();
+});
+
+// Cargar la vista inicial del carrito al abrir la página
+document.addEventListener('DOMContentLoaded', actualizarCarrito);
