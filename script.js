@@ -41,6 +41,7 @@ const productos = [
   { nombre: "Hilo dental biodegradable", categoria: "Cuidado personal", precio: 3.75,
     descripcion: "De seda natural, en frasco de vidrio.", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgMiLKjUN_IFgC0qMtmeBEkz_mdwHe6Sz3FXZhaTZllOM6jmEspuTaOg8&s=10", alt: "Hilo dental biodegradable en frasco" }
 ];
+productos.forEach((p, i) => p.id = i + 1);
 
 const contenedor = document.getElementById("productos");
 const buscador = document.getElementById("buscador");
@@ -61,6 +62,11 @@ function mostrarProductos(lista) {
             <p class="card-text">${p.descripcion}</p>
             <p class="fw-bold">$${p.precio.toFixed(2)}</p>
           </div>
+          <div class="card-footer bg-transparent border-0 pb-3">
+            <button type="button" class="btn btn-success w-100 btn-agregar" data-id="${p.id}">
+              🛒 Agregar al carrito
+            </button>
+          </div>
         </div>
       </div>`);
   });
@@ -79,3 +85,20 @@ function filtrarProductos() {
 buscador.addEventListener("input", filtrarProductos);
 filtro.addEventListener("change", filtrarProductos);
 mostrarProductos(productos);
+
+contenedor.addEventListener("click", (e) => {
+  const boton = e.target.closest(".btn-agregar");
+  if (!boton) return;
+
+  const producto = productos.find(p => p.id === Number(boton.dataset.id));
+  if (!producto) return;
+
+  window.agregarAlCarrito(producto.id, producto.nombre, producto.precio);
+
+  boton.textContent = "✔ Agregado";
+  boton.disabled = true;
+  setTimeout(() => {
+    boton.textContent = "🛒 Agregar al carrito";
+    boton.disabled = false;
+  }, 800);
+});
