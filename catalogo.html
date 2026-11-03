@@ -20,7 +20,7 @@
                 <li class="nav-item"><a class="nav-link fw-semibold p-0 nav-link-custom" href="EcoMarket.html">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link fw-semibold p-0 nav-link-custom" href="catalogo.html">Catálogo</a></li>
                 <li class="nav-item"><a class="nav-link fw-semibold p-0 nav-link-custom" href="EcoMarket.html#contacto">Contacto</a></li>
-                <li class="nav-item"><a class="nav-link fw-semibold p-0 nav-link-custom" href="EcoMarket.html">🛒</a></li>
+                <li class="nav-item"><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#carritoModal"> 🛒 Carrito (<span id="contador-carrito">0</span>)</button></li>
                 <li class="nav-item"><a href="catalogo.html" class="btn btn-success text-white px-3 py-2 fw-semibold shadow-sm">Ver Productos</a></li>
             </ul>
         </div>
@@ -48,6 +48,60 @@
         </div>
     </section>
 
+<p id="sin-resultados" class="text-center d-none">No se encontraron productos.</p>
+<!-- Modal del Carrito de Compras -->
+<div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="carritoModalLabel">Tu Lista de Compras Ecológicas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul id="lista-carrito" class="list-group mb-3">
+          <!-- Los productos se inyectarán aquí -->
+        </ul>
+        <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total:</span>
+            <span id="total-carrito">$0.00</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
+        <button type="button" class="btn btn-primary" id="btn-finalizar-compra">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <p id="sin-resultados" class="text-center d-none">No se encontraron productos.</p>
+    
+<!-- Modal del Carrito de Compras -->
+<div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="carritoModalLabel">Tu Lista de Compras Ecológicas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul id="lista-carrito" class="list-group mb-3">
+          <!-- Los productos se inyectarán aquí desde  -->
+        </ul>
+        <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total:</span>
+            <span id="total-carrito">$0.00</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
+        <button type="button" class="btn btn-primary" id="btn-finalizar-compra">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="script.js"></script>
+    <script src="carrito.js"></script>
 </body>
 </html>
